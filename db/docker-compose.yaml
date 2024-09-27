@@ -1,0 +1,15 @@
+version: '3.3'
+volumes:
+  postgres-bridge-volume:
+services:
+  postgres-bridge:
+    restart: always
+    image: postgres:15.1-alpine
+    volumes:
+      - postgres-bridge-volume:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_USER=bridge-service
+      - POSTGRES_PASSWORD=bridge-service
+      - POSTGRES_DB=bridge-service
