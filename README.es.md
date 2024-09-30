@@ -2,6 +2,8 @@
 # Ejecución de bridge local
 ### Preparar ambiente
 1. Obtener todas las dependecias. Para esto debe ejecutar los siguientes comandos
+
+
 ```bash
 npm install -g typescript ts-node
 ```
@@ -14,6 +16,10 @@ npm install @minka/ledger-sdk
 ```
 ```bash
 npm install envalid dotenv
+```
+
+```bash
+npm install
 ```
 
 ### Base de datos

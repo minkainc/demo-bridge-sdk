@@ -12,7 +12,9 @@
   "dependencies": {
     "@minka/bridge-sdk": "^2.15.0",
     "@minka/ledger-sdk": "^2.15.0",
+    "axios": "^1.7.7",
     "dotenv": "^16.4.5",
-    "envalid": "^8.0.0"
+    "envalid": "^8.0.0",
+    "safe-stable-stringify": "^2.5.0"
   }
 }
