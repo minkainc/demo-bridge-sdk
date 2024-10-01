@@ -1,6 +1,6 @@
 // Populate this with the wallet handle you created, should be env var
-const BANK_WALLET = "mintbank.dev";
-const SCHEMAS = ["caho", "ccte","dbmo"];
+const BANK_WALLET =["paula.bank","mintbank.dev"];
+const SCHEMAS = ["caho", "ccte","dbmo","svgs"];
 const SYMBOLS= ["usd","cop"];
 // Factor for usd is 100
 const USD_FACTOR = 100;
@@ -15,7 +15,7 @@ export function extractAndValidateAddress(address: string) {
   }
   const { schema, handle: account, parent } = result.groups;
   
-  if (parent !== BANK_WALLET) {
+  if (!BANK_WALLET.find(s=> s==parent)) {
     throw new Error(
       `Expected address parent to be ${BANK_WALLET}, got ${parent}`
     );
