@@ -5,17 +5,6 @@
 ```bash
 npm install -g typescript ts-node
 ```
-
-```bash
-npm install @minka/bridge-sdk
-```
-```bash
-npm install @minka/ledger-sdk
-```
-```bash
-npm install envalid dotenv
-```
-
 ```bash
 npm install
 ```
