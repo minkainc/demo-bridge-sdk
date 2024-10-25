@@ -68,9 +68,9 @@ enum loggerTransport {
 
 const logger = {
   prefixes: [],
-  transport: 'pretty' as any,
+  transport: loggerTransport.pretty as any,
   shouldLogContext: true,
-  logLevel: 'debug' as any
+  logLevel: logLevel.debug as any
 }
 // configure server for bridge service
 const bootstrapServer = async () => {
