@@ -1,4 +1,3 @@
-
 # Ejecución de bridge local
 ### Preparar ambiente
 1. Obtener todas las dependecias. Para esto debe ejecutar los siguientes comandos
@@ -33,6 +32,42 @@ y finalmente ejecute el servicio con el comando
 nodemon src/main.ts
 ```
 
+### Configuraciones predeterminadas
+El bridge viene configurado con valores predeterminados que pueden necesitar ajustes según su caso de uso:
+
+- **Wallets soportadas**: El bridge está configurado para trabajar solo con las siguientes wallets:
+  - mintbank.dev
+
+- **Esquemas soportados**: Los esquemas permitidos son:
+  - caho
+  - ccte
+  - dbmo
+  - svgs
+
+- **Símbolos/Monedas soportadas**:
+  - usd (con un factor de 100)
+  - cop
+
+Estas configuraciones se encuentran en el archivo `src/extractor.ts` y pueden ser modificadas según las necesidades específicas de su implementación.
+
+### Core Bancario Simulado
+El proyecto incluye un core bancario simulado en `src/core.ts` que viene con las siguientes cuentas predefinidas:
+
+- **Cuenta '1'**: Cuenta sin balance
+- **Cuenta '424242'**: Cuenta con balance disponible de 70
+  - Balance inicial: 100,000,000
+  - Débito: 10
+  - En hold: 20
+- **Cuenta '3'**: Cuenta sin balance disponible
+  - Balance inicial: 300
+  - Débito: 200
+  - En hold: 100
+- **Cuenta '4'**: Cuenta inactiva
+  - Balance inicial: 200
+  - Débito: 20
+
+Para probar con diferentes cuentas o balances, puede modificar el constructor de la clase Ledger en `src/core.ts`.
+
 ### Sustitución de variables
 Para realizar la configuración de llaves, deberá reemplazar los valores en el archivo `.env` de la siguiente manera
 
@@ -59,25 +94,3 @@ minka signer show [signer] -s
 ```
 
 
-# Ejecución de script para generar intent
-
-Para generar intents puede usar el archivo `src/intent/create.intent.js` para ello, deberá actualizar la información de configuración donde se requiere una llave que tenga permisos de creación de un intent. Esto quiere decir, un signer que pertenezca al circulo desde donde se realiza el debito - owner@domain - (en este caso el script lanza un pago desde el banco testla) 
-
-Para la ejecución de script, puede usar la información del signer `teslabank`, para obtener la información de la llave pública y privada, para esto haga login con `teslabank` y luego ejecute:
-
-```bash
-minka signer show teslabank -s
-```
-Con esta información podrá actualizar los valores `INTENT_PUBLIC_KEY` y `INTENT_PRIVATE_KEY`
-```bash
-const config = {
-    LEDGER_SERVER: [servidor del ledger],
-    LEDGER_HANDLE: [nombre del ledger],
-    INTENT_PUBLIC_KEY: "",
-    INTENT_PRIVATE_KEY:""
-}
-```
-Ahora si podrá ejecutar el comando 
-```bash
-node src/intent/create.intent.js
-```

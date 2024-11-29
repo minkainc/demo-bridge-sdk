@@ -31,6 +31,42 @@ and finally run the service with the command:
 nodemon src/main.ts
 ```
 
+### Default Configurations
+The bridge comes configured with default values that may need adjustments according to your use case:
+
+- **Supported Wallets**: The bridge is configured to work only with the following wallets:
+  - mintbank.dev
+
+- **Supported Schemas**: The allowed schemas are:
+  - caho
+  - ccte
+  - dbmo
+  - svgs
+
+- **Supported Symbols/Currencies**:
+  - usd (with a factor of 100)
+  - cop
+
+These configurations can be found in the `src/extractor.ts` file and can be modified according to your implementation needs.
+
+### Simulated Banking Core
+The project includes a simulated banking core in `src/core.ts` that comes with the following predefined accounts:
+
+- **Account '1'**: Account with no balance
+- **Account '424242'**: Account with available balance of 70
+  - Initial balance: 100,000,000
+  - Debit: 10
+  - On hold: 20
+- **Account '3'**: Account with no available balance
+  - Initial balance: 300
+  - Debit: 200
+  - On hold: 100
+- **Account '4'**: Inactive account
+  - Initial balance: 200
+  - Debit: 20
+
+To test with different accounts or balances, you can modify the Ledger class constructor in `src/core.ts`.
+
 ### Variable Substitution
 To configure the keys, you should replace the values in the `.env` file as follows:
 
@@ -53,27 +89,4 @@ minka signer show system
 If you used the CLI to generate the bridge's public and private keys, you can use the following command to get the information:
 ```bash
 minka signer show [signer] -s
-```
-
-# Running Script to Generate Intent
-
-To generate intents, you can use the `src/intent/create.intent.js` file. For this, you will need to update the configuration information where a key with permissions to create an intent is required. This means a signer that belongs to the circle from where the debit is made - owner@domain - (in this case, the script initiates a payment from the Tesla bank).
-
-To run the script, you can use the information from the `teslabank` signer. To obtain the public and private key information, log in with `teslabank` and then run:
-
-```bash
-minka signer show teslabank -s
-```
-With this information, you can update the `INTENT_PUBLIC_KEY` and `INTENT_PRIVATE_KEY` values:
-```bash
-const config = {
-    LEDGER_SERVER: [ledger server],
-    LEDGER_HANDLE: [ledger name],
-    INTENT_PUBLIC_KEY: "",
-    INTENT_PRIVATE_KEY:""
-}
-```
-Now you can run the command:
-```bash
-node src/intent/create.intent.js
 ```
