@@ -42,7 +42,12 @@ LEDGER_SERVER[servidor en el que se encuentra el ledger]
 LEDGER_PUBLIC_KEY=[llave pública del ledger] 
 BRIDGE_PUBLIC_KEY=[Llave pública del bridge que está configurando]
 BRIDGE_SECRET_KEY=[Llave privada del bridge que está configurando]
+CLIENT_ID=[client id]
+CLIENT_SECRET=[client secret]
 ```
+Nota: 
+   `CLIENT_ID` y `CLIENT_SECRET` Son las credenciales del cliente que se usará para autenticar las solicitudes al servidor.
+
 
 para obtener la llave pública del ledger, ejecute:
 ```bash
