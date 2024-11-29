@@ -16,4 +16,6 @@ export const config = cleanEnv(process.env, {
     default: 100,
     desc: 'Database connections limit',
   }),
+  CLIENT_ID: str({ desc: 'Client ID' }),
+  CLIENT_SECRET: str({ desc: 'Client secret' }),
 })

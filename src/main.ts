@@ -39,6 +39,10 @@ const ledger: LedgerClientOptions = {
       public: config.LEDGER_PUBLIC_KEY,
     },
   },
+  headers: {
+    'clientId': config.CLIENT_ID,
+    'clientSecret': config.CLIENT_SECRET
+  },
   server: config.LEDGER_SERVER,
   bridge: {
     signer: {
